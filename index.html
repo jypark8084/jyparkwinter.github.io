@@ -4,102 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christmas Wishes</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-image: url('winter ark.webp'); /* 배경 이미지를 winter ark.webp로 설정 */
-            background-size: cover;
-            background-position: center;
-        }
-        .container {
-            position: relative;
-            width: 90vw; /* Viewport width 기준으로 맵 크기 설정 */
-            max-width: 512px; /* 맵 최대 크기 제한 */
-            aspect-ratio: 1 / 1; /* 정사각형 비율 유지 */
-            background-image: url('moble ark.jpg');
-            background-size: cover;
-            background-position: center;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .message {
-            position: absolute;
-            width: 90%;
-            left: 50%;
-            top: 10%;
-            transform: translate(-50%, 0);
-            background: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            text-align: center;
-        }
-        .icon {
-            position: absolute;
-            width: 10%; /* 아이콘 크기 비율로 설정 */
-            aspect-ratio: 1 / 1; /* 정사각형 유지 */
-            top: 30%; /* 맵 기준 상대 위치 */
-            left: 70%; /* 맵 기준 상대 위치 */
-            background-image: url('icon.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            transform: translate(-50%, -50%);
-            pointer-events: none; /* 클릭 불가능 설정 */
-        }
-        .write-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #ff5722;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-        }
-        .write-button:hover {
-            background-color: #e64a19;
-        }
-        .login-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-size: 14px;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .login-button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <!-- Firebase 스크립트 추가 -->
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js"></script>
+    <!-- main.js 파일을 module로 로드 -->
+    <script type="module" src="scripts/main.js" defer></script>
 </head>
 <body>
     <div class="container">
-        <div class="icon"></div>
-        <div class="message">
-            "여기에 친구들이 크리스마스에 하고 싶은 말을 입력하세요."
-        </div>
+        <!-- 맵 영역 -->
     </div>
     <button class="write-button">✍</button>
     <a href="/login/login/login.html" class="login-button">로그인</a>
+
+    <!-- 팝업 창 -->
+    <div id="messagePopup" class="popup hidden">
+        <form id="messageForm">
+            <label for="nickname">닉네임:</label>
+            <input type="text" id="nickname" name="nickname" required>
+
+            <label for="message">본문:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">메시지 저장</button>
+            <button type="button" id="cancelButton">취소</button>
+        </form>
+    </div>
 </body>
 </html>

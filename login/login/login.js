@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             let emailToLogin;
-
+ 
             // Firestore에서 사용자 정보 가져오기
             const userDoc = await getDoc(doc(db, "users", identifier));
             if (userDoc.exists()) {
