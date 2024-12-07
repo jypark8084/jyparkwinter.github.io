@@ -1,8 +1,6 @@
-// Firebase 모듈 가져오기
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js';
-import { getDatabase } from 'https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js';
-import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database"; // Realtime Database 모듈
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
+import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
+
 
 // Firebase 설정
 const firebaseConfig = {
@@ -18,8 +16,9 @@ const firebaseConfig = {
 // Firebase 앱 초기화
 const app = initializeApp(firebaseConfig);
 
-// Realtime Database 참조
-const database = getDatabase(app);
+// Firestore 초기화
+const db = getFirestore(app);
 
-// 데이터베이스 확인 로그
-console.log("Firebase Initialized", database);
+// Default 및 Firestore 내보내기
+export default app; // Firebase 앱 기본 내보내기
+export { db };      // Firestore 내보내기

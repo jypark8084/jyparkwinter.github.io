@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write Wish</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="scripts/firebase-init.js"></script>
+    <script type="module" src="scripts/write.js"></script>
+</head>
+<body>
+    <form id="writeForm">
+        <label for="message">닉네임</label>
+        <input type="text" id="username" placeholder="닉네임" required>
+        
+        <label for="message">메시지</label>
+        <textarea id="message" placeholder="작성할 메시지" required></textarea>
+        
+        <label for="location">맵 위치</label>
+        <input type="range" id="x" min="0" max="100" value="50">
+        <input type="range" id="y" min="0" max="100" value="50">
+        
+        <button type="submit">작성하기</button>
+    </form>
+</body>
+</html>
