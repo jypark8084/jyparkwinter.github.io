@@ -22,11 +22,6 @@ onAuthStateChanged(auth, async (user) => {
         loginLink.textContent = username;
         loginLink.href = "#"; // 로그인 상태에서는 이동 방지
 
-        // 사용자에게 닉네임을 설정할 수 있는 옵션 추가 (필요한 경우)
-        if (!user.displayName) {
-            console.log("닉네임이 없습니다. 기본값을 표시 중입니다.");
-            await promptToSetNickname(user);
-        }
     } else {
         // 사용자가 로그아웃한 경우
         console.log("사용자가 로그아웃 상태입니다.");
@@ -34,17 +29,3 @@ onAuthStateChanged(auth, async (user) => {
         loginLink.href = "/login/login.html"; // 로그인 페이지로 이동
     }
 });
-
-// 닉네임 설정 요청 (옵션)
-async function promptToSetNickname(user) {
-    const nickname = prompt("닉네임을 설정해주세요:");
-    if (nickname) {
-        try {
-            await updateProfile(user, { displayName: nickname });
-            console.log("닉네임이 성공적으로 설정되었습니다:", nickname);
-            loginLink.textContent = nickname; // 닉네임 업데이트
-        } catch (error) {
-            console.error("닉네임 설정 중 오류:", error);
-        }
-    }
-}
